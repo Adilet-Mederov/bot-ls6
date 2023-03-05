@@ -1,6 +1,8 @@
 from aiogram import types,Dispatcher
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import bot, db
+from keyboards.client_kb import start_markup
+
 
 
 async def start_handler(massage:types.message):
@@ -12,7 +14,6 @@ async def start_handler(massage:types.message):
 
 
 # опросник\викторина
-@db.message_handler(commands=['quiz'])
 async def quiz1(massage:types.Message):
     markup = InlineKeyboardMarkup()
     button = InlineKeyboardButton('next', callback_data='button')
@@ -39,11 +40,20 @@ async def quiz1(massage:types.Message):
         reply_markup=markup
     )
 
-async def info_hand(massage: types.Message):
-    await massage.answer('Нет инфы!')
 
-
-def rec_client(db:Dispatcher):
+def reg_client(db:Dispatcher):
     db.register_message_handler(start_handler,commands=['start' , 'hello'])
     db.register_message_handler(quiz1,commands=['quiz'])
-    db.register_message_handler(info_hand, commands=['info'])
+
+
+
+
+
+
+
+
+
+
+    # db.register_message_handler(info_hand, commands=['info'])
+    # async def info_hand(massage: types.Message):
+    #     await massage.answer('Нет инфы!')

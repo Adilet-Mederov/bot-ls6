@@ -1,15 +1,13 @@
-from aiogram import Bot, Dispatcher, executor, types
-import logging
+from aiogram import executor  # для запуска бота
+from handler import client, callback, admin, fsm_anketa, extra
 from config import db
-from handler import client,callback,admin,extra
+import logging
 
-
-
-client.rec_client(db)
+client.reg_client(db)
 callback.reg_hand_callback(db)
 admin.reg_ban(db)
+fsm_anketa.reg_hand_anketa(db)
 extra.reg_hand_extra(db)
-
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)

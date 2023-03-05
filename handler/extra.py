@@ -1,9 +1,6 @@
 from aiogram import types,Dispatcher
 from config import bot,db
 
-from aiogram import Dispatcher, types
-from config import bot
-
 async def echo(massage: types.Message):
     bad_words = ['маты']
     for word in bad_words:
